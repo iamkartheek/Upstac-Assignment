@@ -62,13 +62,8 @@ public class LabResultService {
         // create an object of LabResult and make use of setters to set Blood Pressure, Comments,
         // HeartBeat, OxygenLevel, Temperature, Result and UpdatedOn values
         // make use of the saveLabResult() method to return the object of LabResult
-        LabResult result= testRequest.getLabResult();
-        labResultRepository.deleteById(result.getResultId());
-        User user = userLoggedInService.getLoggedInUser();
-        LabResult labResult = new LabResult();
+        LabResult labResult= testRequest.getLabResult();
         labResult.setBloodPressure(createLabResult.getBloodPressure());
-        labResult.setTester(user);
-        labResult.setRequest(testRequest);
         labResult.setComments(createLabResult.getComments());
         labResult.setHeartBeat(createLabResult.getHeartBeat());
         labResult.setOxygenLevel(createLabResult.getOxygenLevel());

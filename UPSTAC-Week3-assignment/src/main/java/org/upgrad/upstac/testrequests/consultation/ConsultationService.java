@@ -44,15 +44,10 @@ public class ConsultationService {
         // create an object of Consultation and make use of setters to set Suggestion, Comments, and UpdatedOn values
         // make use of save() method of
         // to return the Consultation object
-        Consultation result= testRequest.getConsultation();
-        consultationRepository.deleteById(result.getId());
-        User user = userLoggedInService.getLoggedInUser();
-        Consultation consultation = new Consultation();
-        consultation.setRequest(testRequest);
+        Consultation consultation = testRequest.getConsultation();
         consultation.setComments(createConsultationRequest.getComments());
         consultation.setSuggestion(createConsultationRequest.getSuggestion());
         consultation.setUpdatedOn(LocalDate.now());
-        consultation.setDoctor(user);
         consultationRepository.save(consultation);
         return consultation;
     }
